@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog - Conseils & Actualités - ManaAnimaux</title>
+  <meta name="description" content="Découvrez nos conseils d'experts pour prendre soin de vos animaux de compagnie. Guides pratiques, astuces santé et actualités." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- AOS Animation Library -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" data-aos="fade-down" data-aos-duration="800">
+    <div class="container header__content">
+      <a href="index.html" class="logo" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/images/logo.png" alt="ManaAnimaux Logo">
+      </a>
+      <form class="search" role="search" aria-label="Recherche de produits" data-aos="fade-up" data-aos-delay="400">
+        <input id="search" name="q" type="search" placeholder="Rechercher un produit...">
+        <button type="submit">
+          <i class="fas fa-search"></i>
+          <span class="btn-text">Rechercher</span>
+        </button>
+      </form>
+      <div class="header__cta" data-aos="fade-left" data-aos-delay="600">
+        <a class="contact" href="tel:+213331130" aria-label="Téléphone">
+          <i class="fas fa-phone"></i>
+          <span>+213331130</span>
+        </a>
+        <a class="cart" href="#" aria-label="Panier" id="cart-toggle">
+          <i class="fas fa-shopping-cart cart__icon"></i>
+          <span class="cart__count" aria-live="polite">0</span>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Menu mobile">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mobile-nav">
+    <div class="nav__overlay"></div>
+    <div class="container">
+      <div class="nav__mobile-header">
+        <img src="assets/images/logo.png" alt="ManaAnimaux Logo" class="nav__mobile-logo">
+        <button class="nav__close" aria-label="Fermer le menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav__list">
+        <li><a href="index.html">
+          <i class="fas fa-home"></i>
+          <span>Accueil</span>
+        </a></li>
+        <li><a href="boutique.html">
+          <i class="fas fa-store"></i>
+          <span>Boutique</span>
+        </a></li>
+        <li><a class="active" href="blog.html">
+          <i class="fas fa-blog"></i>
+          <span>Blog</span>
+        </a></li>
+        <li><a href="apropos.html">
+          <i class="fas fa-info-circle"></i>
+          <span>À propos</span>
+        </a></li>
+        <li><a href="contacte.html">
+          <i class="fas fa-envelope"></i>
+          <span>Contact</span>
+        </a></li>
+      </ul>
+      <div class="nav__mobile-contact">
+        <a href="tel:+213331130" class="nav__mobile-phone">
+          <i class="fas fa-phone"></i>
+          <span>+213331130</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Hero Section -->
+  <section class="blog-hero" data-aos="fade-up">
+    <div class="container">
+      <div class="blog-hero__content">
+        <h1 class="blog-hero__title">
+          <i class="fas fa-blog"></i>
+          Blog ManaAnimaux
+        </h1>
+        <p class="blog-hero__subtitle">Conseils d'experts, guides pratiques et actualités pour le bien-être de vos compagnons</p>
+        <div class="blog-hero__stats" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat">
+            <i class="fas fa-newspaper"></i>
+            <span>Articles récents</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-heart"></i>
+            <span>Conseils santé</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Guides experts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <!-- Article 1: Chats -->
+          <article class="blog-post" data-aos="fade-up" data-aos-delay="100" data-category="chats">
+            <div class="blog-post__header">
+              <div class="blog-post__category">
+                <i class="fas fa-cat"></i>
+                <span>Chats</span>
+              </div>
+              <div class="blog-post__meta">
+                <span class="blog-post__date">
+                  <i class="fas fa-calendar"></i>
+                  1er septembre 2025
+                </span>
+                <span class="blog-post__read-time">
+                  <i class="fas fa-clock"></i>
+                  5 min de lecture
+                </span>
+              </div>
+              <div class="blog-post__body">
+                <p>Bien nourrir son chat, c’est lui assurer une vie longue, saine et pleine d’énergie. L’alimentation joue un rôle clé sur sa santé, son pelage, son poids et même son humeur.</p>
+                <p>En Algérie, le choix s’élargit entre croquettes, pâtées industrielles et alimentation naturelle.</p>
+                <p><strong>Les croquettes</strong> sont pratiques, économiques et équilibrées si elles sont de bonne qualité (riches en protéines animales, pauvres en céréales).</p>
+                <p><strong>Les pâtées</strong> offrent plus d’hydratation, idéales pour les chats qui boivent peu. Elles sont aussi très appréciées par les félins gourmands.</p>
+                <p><strong>L’alimentation naturelle</strong> (viande, poisson, riz, légumes) peut être bénéfique, mais elle doit être bien dosée pour éviter les carences.</p>
+                <p><strong>👉 Conseil&nbsp;:</strong> adaptez la nourriture à l’âge, au poids et à l’activité de votre chat, en privilégiant la qualité à la quantité. Un chat bien nourri, c’est un compagnon heureux et en pleine forme.</p>
+              </div>
+            </div>
+
+            <h2 class="blog-post__title">
+              <a href="#">Comment choisir la meilleure alimentation pour votre chat</a>
+            </h2>
+
+            <div class="blog-post__image">
+              <img src="assets/images/chatnourriture.jpg" class="img-fluid" alt="Chat mangeant des croquettes">
+              <div class="blog-post__image-overlay">
+                <div class="blog-post__tags">
+                  <span class="tag">Nutrition</span>
+                  <span class="tag">Habitat</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-post__content">
+              <div class="blog-post__excerpt">
+                <p class="lead">Bien nourrir son chat est essentiel pour préserver sa santé, son énergie et sa longévité. En Algérie, l'offre de croquettes, pâtées et aliments naturels s'élargit, mais comment faire le bon choix ?</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 2: Chiens -->
+          <article class="blog-post" data-aos="fade-up" data-aos-delay="150" data-category="chiens">
+            <div class="blog-post__header">
+              <div class="blog-post__category">
+                <i class="fas fa-dog"></i>
+                <span>Chiens</span>
+              </div>
+              <div class="blog-post__meta">
+                <span class="blog-post__date">
+                  <i class="fas fa-calendar"></i>
+                  10 septembre 2025
+                </span>
+                <span class="blog-post__read-time">
+                  <i class="fas fa-clock"></i>
+                  4 min de lecture
+                </span>
+              </div>
+            </div>
+
+            <h2 class="blog-post__title">
+              <a href="#">Exercice et bien-être : les bonnes pratiques</a>
+            </h2>
+
+            <div class="blog-post__image" data-aos="zoom-in" data-aos-delay="100">
+              <img src="assets/images/chienblog11.png" class="img-fluid" alt="Chien courant lors d'une sortie sportive en forêt">
+            </div>
+
+            <div class="blog-post__content">
+              <div class="blog-post__excerpt">
+                <p class="lead">Tout comme les humains, les chiens ont besoin d’activité physique régulière pour rester en bonne santé et s’épanouir. L’exercice contribue non seulement à leur forme physique, mais aussi à leur équilibre mental et émotionnel.</p>
+              </div>
+              <div class="blog-post__body">
+                <h3>Sorties quotidiennes</h3>
+                <p>Les promenades sont indispensables. Elles permettent au chien de se dépenser, d’explorer son environnement et de stimuler ses sens. La durée et l’intensité varient selon la race, l’âge et l’état de santé, mais une sortie quotidienne est un minimum vital.</p>
+
+                <h3>Jeux et stimulation mentale</h3>
+                <p>L’exercice ne se limite pas à courir ou marcher. Les jeux de balle, de frisbee ou encore les parcours d’agilité renforcent les muscles et entretiennent la complicité maître-chien. Les jouets interactifs ou les exercices d’obéissance stimulent aussi leur esprit et réduisent l’ennui.</p>
+
+                <h3>Respecter ses besoins</h3>
+                <p>Chaque chien est unique. Certains adorent courir longtemps, d’autres préfèrent de courtes promenades fréquentes. Observer son compagnon et adapter l’activité à son énergie et à son âge évite les blessures et favorise son bien-être.</p>
+
+                <h3>Un mode de vie équilibré</h3>
+                <p>L’exercice doit aller de pair avec une alimentation adaptée, de l’eau fraîche à disposition et des temps de repos suffisants. Un chien bien nourri, bien hydraté et correctement stimulé sera plus calme, heureux et en meilleure santé.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-4">
+          <aside class="sidebar">
+            <div class="sidebar-widget">
+              <h3 class="widget-title"><i class="fas fa-tags"></i> Catégories</h3>
+              <ul class="category-list">
+                <li><a href="#" class="category-filter" data-category="tous">Tous</a></li>
+                <li><a href="#" class="category-filter" data-category="chats">Chats</a></li>
+                <li><a href="#" class="category-filter" data-category="chiens">Chiens</a></li>
+                <li><a href="#" class="category-filter" data-category="oiseaux">Oiseaux</a></li>
+                <li><a href="#" class="category-filter" data-category="poissons">Poissons</a></li>
+                <li><a href="#" class="category-filter" data-category="rongeurs">Rongeurs</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid"></div>
+    <div class="text-center py-3">
+      <p>&copy; <span id="year"></span> ManaAnimaux. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <!-- Custom JS (cart, interactions partagées) -->
+  <script src="assets/js/script-new.js"></script>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-cart"></i> Mon Panier</h3>
+      <button class="cart-close" id="cart-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-items">
+      <div class="empty-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Votre panier est vide</p>
+        <small>Ajoutez des produits pour commencer vos achats</small>
+      </div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display: none;">
+      <div class="delivery-option mb-3">
+        <label class="delivery-checkbox d-flex align-items-center">
+          <input type="checkbox" id="delivery-option" onchange="updateCartTotal()">
+          <span class="ms-2">Livraison à domicile</span>
+          <span class="delivery-price ms-auto">500 DA</span>
+        </label>
+      </div>
+      <div class="cart-totals">
+        <div class="d-flex justify-content-between mb-2">
+          <span>Sous-total:</span>
+          <span id="cart-subtotal">0 DA</span>
+        </div>
+        <div class="d-flex justify-content-between mb-2">
+          <span>Frais de livraison:</span>
+          <span id="delivery-cost">0 DA</span>
+        </div>
+        <div class="d-flex justify-content-between total-line--final">
+          <strong>Total:</strong>
+          <strong id="cart-total">0 DA</strong>
+        </div>
+      </div>
+      <button class="btn btn--primary btn-block mt-3" id="checkout-btn" type="button">
+        <i class="fas fa-credit-card"></i> Passer commande
+      </button>
+    </div>
+  </div>
+  
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <!-- Checkout Modal -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fas fa-credit-card"></i> Finaliser la commande</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-12 col-md-6">
+              <form id="checkout-form" onsubmit="return processOrder()">
+                <div class="mb-3">
+                  <label class="form-label">Prénom</label>
+                  <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nom</label>
+                  <input type="text" class="form-control" id="lastName" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Numéro de téléphone</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="05xx xx xx xx" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Wilaya</label>
+                  <select class="form-select" id="wilaya" required>
+                    <option value="" selected disabled>Choisir une wilaya</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Adresse complète</label>
+                  <textarea class="form-control" id="address" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary w-100" id="submit-order">
+                  <i class="fas fa-check"></i> Valider la commande
+                </button>
+              </form>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="border rounded p-3 bg-light h-100">
+                <h6 class="mb-3"><i class="fas fa-receipt"></i> Récapitulatif</h6>
+                <div id="checkout-summary"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

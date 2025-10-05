@@ -1,0 +1,1094 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boutique E-commerce - ManaAnimaux</title>
+  <meta name="description" content="Découvrez notre large sélection de produits pour chats, chiens, oiseaux, rongeurs et poissons. Livraison rapide en Algérie." />
+ <link rel="stylesheet" href="assets/css/shop-new.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- AOS Animation Library -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/shop.css">
+  <style>
+    /* Styles pour la pagination */
+    .pagination {
+        display: inline-flex;
+        align-items: center;
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 30px;
+        padding: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin: 2rem auto;
+    }
+
+    .pagination__btn {
+        padding: 8px 15px;
+        background: transparent;
+        border: none;
+        color: #2185f0;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .pagination__btn:hover:not(:disabled) {
+        background: rgba(33, 133, 240, 0.1);
+    }
+
+    .pagination__btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        color: #999;
+    }
+
+    .pagination__numbers {
+        display: flex;
+        align-items: center;
+        border-left: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+        padding: 0 10px;
+        margin: 0 10px;
+    }
+
+    .pagination__number {
+        width: 35px;
+        height: 35px;
+        border: none;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #666;
+        font-weight: 500;
+        border-radius: 50%;
+        margin: 0 2px;
+    }
+
+    .pagination__number:hover:not(.active) {
+        background: rgba(33, 133, 240, 0.1);
+        color: #2185f0;
+    }
+
+    .pagination__number.active {
+        background: #2185f0;
+        color: white;
+    }
+
+    .pagination__dots {
+        padding: 0 8px;
+        color: #666;
+    }
+
+    /* Conteneur de pagination centré */
+    .pagination-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Styles pour le panier */
+    .cart-footer {
+      padding: 1rem;
+      border-top: 1px solid #eee;
+    }
+
+    .delivery-option {
+      background: #f8f8f8;
+      padding: 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .delivery-checkbox {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .delivery-checkbox input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+
+    .delivery-price {
+      margin-left: auto;
+      color: #666;
+    }
+
+    .cart-totals {
+      margin-top: 1rem;
+    }
+
+    .total-line--final {
+      border-top: 2px solid #eee;
+      padding-top: 0.8rem;
+      margin-top: 0.8rem;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" data-aos="fade-down" data-aos-duration="800">
+    <div class="container header__content">
+      <a href="index.html" class="logo" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/images/logo.png" alt="ManaAnimaux Logo">
+      </a>
+      <form class="search" role="search" aria-label="Recherche de produits" data-aos="fade-up" data-aos-delay="400">
+        <input id="search" name="q" type="search" placeholder="Rechercher un produit……">
+        <button type="submit">
+          <i class="fas fa-search"></i>
+          <span class="btn-text">Rechercher</span>
+        </button>
+      </form>
+      <div class="header__cta" data-aos="fade-left" data-aos-delay="600">
+        <a class="contact" href="tel:+213331130" aria-label="Téléphone">
+          <i class="fas fa-phone"></i>
+          <span>+213331130</span>
+        </a>
+        <a class="cart" href="#" aria-label="Panier" id="cart-toggle">
+          <i class="fas fa-shopping-cart cart__icon"></i>
+          <span class="cart__count" aria-live="polite">0</span>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Menu mobile">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mobile-nav">
+    <div class="nav__overlay"></div>
+    <div class="container">
+      <div class="nav__mobile-header">
+        <img src="assets/images/logo.png" alt="ManaAnimaux Logo" class="nav__mobile-logo">
+        <button class="nav__close" aria-label="Fermer le menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul class="nav__list">
+        <li><a href="index.html">
+          <i class="fas fa-home"></i>
+          <span>Accueil</span>
+        </a></li>
+        <li><a class="active" href="boutique.html">
+          <i class="fas fa-store"></i>
+          <span>Boutique</span>
+        </a></li>
+        <li><a href="blog.html">
+          <i class="fas fa-blog"></i>
+          <span>Blog</span>
+        </a></li>
+        <li><a href="apropos.html">
+          <i class="fas fa-info-circle"></i>
+          <span>À propos</span>
+        </a></li>
+        <li><a href="contacte.html">
+          <i class="fas fa-envelope"></i>
+          <span>Contact</span>
+        </a></li>
+      </ul>
+      <div class="nav__mobile-contact">
+        <a href="tel:+213331130" class="nav__mobile-phone">
+          <i class="fas fa-phone"></i>
+          <span>+213331130</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb-nav" data-aos="fade-right">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+        <li class="active"><i class="fas fa-store"></i> Boutique</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Shop Hero Section -->
+  <section class="shop-hero" data-aos="fade-up">
+    <div class="container">
+      <div class="shop-hero__content">
+        <h1 class="shop-hero__title">
+          <i class="fas fa-paw"></i>
+          Boutique ManaAnimaux
+        </h1>
+        <p class="shop-hero__subtitle">Découvrez plus de <span class="highlight" id="product-count">150 produits</span> pour le bonheur de vos compagnons</p>
+        <div class="shop-hero__stats" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat">
+            <i class="fas fa-shipping-fast"></i>
+            <span>Livraison 48h</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-award"></i>
+            <span>Qualité garantie</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-phone-alt"></i>
+            <span>Support 24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop Section -->
+  <section class="shop-section">
+    <div class="container">
+      <div class="shop-layout">
+        
+        <!-- Sidebar Filters -->
+        <aside class="shop-sidebar" data-aos="fade-right">
+          <div class="filter-header">
+            <h3><i class="fas fa-filter"></i> Filtres</h3>
+            <button class="filter-clear" id="clear-filters">
+              <i class="fas fa-times"></i> Effacer
+            </button>
+          </div>
+          
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">
+              <i class="fas fa-list"></i> Catégories
+              <button class="filter-toggle"><i class="fas fa-chevron-down"></i></button>
+            </h4>
+            <div class="filter-content">
+              <div class="filter-item">
+                <input type="checkbox" id="all-animals" name="animal" value="all" checked>
+                <label for="all-animals">
+                  <i class="fas fa-paw"></i> Tous les animaux
+                  <span class="count">(150)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="cats" name="animal" value="cats">
+                <label for="cats">
+                  <i class="fas fa-cat"></i> Chats
+                  <span class="count">(45)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="dogs" name="animal" value="dogs">
+                <label for="dogs">
+                  <i class="fas fa-dog"></i> Chiens
+                  <span class="count">(52)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="birds" name="animal" value="birds">
+                <label for="birds">
+                  <i class="fas fa-dove"></i> Oiseaux
+                  <span class="count">(23)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="rodents" name="animal" value="rodents">
+                <label for="rodents">
+                  <i class="fas fa-mouse"></i> Rongeurs
+                  <span class="count">(18)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="fish" name="animal" value="fish">
+                <label for="fish">
+                  <i class="fas fa-fish"></i> Poissons
+                  <span class="count">(12)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product Type Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">
+              <i class="fas fa-tags"></i> Type de produit
+              <button class="filter-toggle"><i class="fas fa-chevron-down"></i></button>
+            </h4>
+            <div class="filter-content">
+              <div class="filter-item">
+                <input type="checkbox" id="food" name="type" value="food">
+                <label for="food">
+                  <i class="fas fa-utensils"></i> Nourriture
+                  <span class="count">(65)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="care" name="type" value="care">
+                <label for="care">
+                  <i class="fas fa-heart"></i> Soins
+                  <span class="count">(32)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="accessories" name="type" value="accessories">
+                <label for="accessories">
+                  <i class="fas fa-gem"></i> Accessoires
+                  <span class="count">(38)</span>
+                </label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="cleaning" name="type" value="cleaning">
+                <label for="cleaning">
+                  <i class="fas fa-spray-can"></i> Nettoyage
+                  <span class="count">(15)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Price Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">
+              <i class="fas fa-money-bill-wave"></i> Prix
+              <button class="filter-toggle"><i class="fas fa-chevron-down"></i></button>
+            </h4>
+            <div class="filter-content">
+              <div class="price-range">
+                <input type="range" id="price-min" min="0" max="10000" value="0">
+                <input type="range" id="price-max" min="0" max="10000" value="10000">
+                <div class="price-labels">
+                  <span id="price-min-label">0 DA</span>
+                  <span id="price-max-label">10,000 DA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Brand Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">
+              <i class="fas fa-trademark"></i> Marques
+              <button class="filter-toggle"><i class="fas fa-chevron-down"></i></button>
+            </h4>
+            <div class="filter-content">
+              <div class="filter-item">
+                <input type="checkbox" id="whiskas" name="brand" value="whiskas">
+                <label for="whiskas">Whiskas <span class="count">(12)</span></label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="friskies" name="brand" value="friskies">
+                <label for="friskies">Friskies <span class="count">(8)</span></label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="pedigree" name="brand" value="pedigree">
+                <label for="pedigree">Pedigree <span class="count">(10)</span></label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="royal-canin" name="brand" value="royal-canin">
+                <label for="royal-canin">Royal Canin <span class="count">(15)</span></label>
+              </div>
+            </div>
+          </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="shop-main">
+          
+          <!-- Shop Controls -->
+          <div class="shop-controls" data-aos="fade-left">
+            <div class="controls-left">
+              <button class="mobile-filter-toggle">
+                <i class="fas fa-filter"></i> Filtres
+              </button>
+              <div class="results-info">
+                <span id="results-count">150 produits</span> trouvés
+              </div>
+            </div>
+            <div class="controls-right">
+              <div class="view-toggle">
+                <button class="view-btn active" data-view="grid">
+                  <i class="fas fa-th-large"></i>
+                </button>
+                <button class="view-btn" data-view="list">
+                  <i class="fas fa-list"></i>
+                </button>
+              </div>
+              <select class="sort-select" id="sort-products">
+                <option value="name-asc">Nom A-Z</option>
+                <option value="name-desc">Nom Z-A</option>
+                <option value="price-asc">Prix croissant</option>
+                <option value="price-desc">Prix décroissant</option>
+                <option value="newest">Plus récents</option>
+                <option value="popular">Plus populaires</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Products Grid -->
+          <div class="products-grid" id="products-container" data-aos="fade-up" data-aos-delay="200">
+            
+            <!-- PRODUITS POUR CHATS -->
+            <!-- Pâtés Chat -->
+            <article class="product" data-animal="cats" data-type="food" data-subtype="pate" data-price="950">
+              <div class="product__badge">Populaire</div>
+              <div class="product__media">
+                <img src="assets/images/gourmetperle 4x85g.webp" alt="Pâtée Gourmet gourmande chat 4x85g" loading="lazy" />
+                <div class="product__overlay">
+                  <button class="btn-quick-view" data-product-id="1">
+                    <i class="fas fa-eye"></i> Aperçu rapide
+                  </button>
+                  <button class="btn-wishlist">
+                    <i class="far fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-cat"></i> Chats · Pâtée
+                </div>
+                <h3 class="product__title">
+                  <a href="#">Pâtée Gourmet Perle 4x85g</a>
+                </h3>
+                <div class="product__rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="rating-count">(24 avis)</span>
+                </div>
+                <div class="product__price">
+                  <span class="current-price">950 DA</span>
+                  <span class="old-price">1,200 DA</span>
+                </div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="1">
+                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <article class="product" data-animal="cats" data-type="food" data-subtype="pate" data-price="1150">
+              <div class="product__media">
+                <img src="assets/images/gourmetgold12-85.webp" alt="Pâtée premium chat 12x85g" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-cat"></i> Chats · Pâtée
+                </div>
+                <h3 class="product__title">
+                  <a href="#">Pâtée Gourmet Gold 12x85g</a>
+                </h3>
+                <div class="product__rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span class="rating-count">(18 avis)</span>
+                </div>
+                <div class="product__price">
+                  <span class="current-price">1,150 DA</span>
+                </div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="2">
+                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- Croquettes Chat -->
+            <article class="product" data-animal="cats" data-type="food" data-subtype="croquettes" data-price="4200">
+              <div class="product__media">
+                <img src="assets/images/friskiesjunior.png" alt="Croquettes chat junior 2kg" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-cat"></i> Chats • Croquettes
+                </div>
+                <h3 class="product__title">
+                  <a href="">Croquettes chat junior 2kg</a>
+                </h3>
+                <div class="product__rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="rating-count">(4 avis)</span>
+                </div>
+                <div class="product__price">
+                  <span class="current-price">4,200 DA</span>
+                </div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="3">
+                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <article class="product" data-animal="cats" data-type="food" data-subtype="croquettes" data-price="6500">
+              <div class="product__badge new">Nouveau</div>
+              <div class="product__media">
+                <img src="assets/images/royal-canin-indoor-4kg.webp" />
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-cat"></i> Chats • Croquettes
+                </div>
+                <h3 class="product__title">
+                  <a href="#">Royal Canin Indoor 4kg</a>
+                </h3>
+                <div class="product__rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="rating-count">(3 avis)</span>
+                </div>
+                <div class="product__price">
+                  <span class="current-price">6,500 DA</span>
+                  <span class="old-price">7,200 DA</span>
+                </div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="4">
+                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- Soins Chat -->
+            <article class="product" data-animal="cats" data-type="care" data-subtype="hygiene" data-price="1100">
+              <div class="product__media">
+                <img src="assets/images/biocaninashampoing.jpeg" alt="Shampooing chat poils longs" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-cat"></i> Chats • Soins
+                </div>
+                <h3 class="product__title">
+                  <a href="#">Shampooing chat poils longs 250ml</a>
+                </h3>
+                <div class="product__rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span class="rating-count">(5 avis)</span>
+                </div>
+                <div class="product__price">
+                  <span class="current-price">1100 Ø¯.Ø¬</span>
+                </div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="5">
+                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- Accessoires Chat -->
+            <article class="product" data-animal="cats" data-type="accessories" data-subtype="toys" data-price="650">
+              <div class="product__media">
+                <img src="assets/images/jouetherbechat.jpg" alt="Jouet souris avec herbe Ã  chat" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-cat"></i> Chats • Accessoires
+                </div>
+                <h3 class="product__title">
+                  <a href="#">Jouet souris avec herbe à chat</a>
+                </h3>
+                <div class="product__rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="rating-count">(8 avis)</span>
+                </div>
+                <div class="product__price">
+                  <span class="current-price">650 Ø¯.Ø¬</span>
+                </div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="6">
+                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- Litières Chat -->
+            <article class="product" data-animal="cats" data-type="cleaning" data-subtype="litiere" data-price="1600">
+              <div class="product__media">
+                <img src="assets/images/litieregoldencat.jpg" alt="LitiÃ¨re agglomÃ©rante 10L" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-cat"></i> Chats • Litière
+                </div>
+                <h3 class="product__title">
+                  <a href="#">LitiÃ¨re agglomÃ©rante 10L</a>
+                </h3>
+                <div class="product__rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span class="rating-count">(41 avis)</span>
+                </div>
+                <div class="product__price">
+                  <span class="current-price">1,600 Ø¯.Ø¬</span>
+                </div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="7">
+                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- PRODUITS POUR CHIENS -->
+            <article class="product" data-animal="dogs" data-type="food" data-subtype="pate" data-price="1250">
+              <div class="product__badge">Bestseller</div>
+              <div class="product__media">
+                <img src="assets/images/pateechiens400g.jpg" alt="Pâtée chien adulte 400g" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category">
+                  <i class="fas fa-dog"></i> Chiens · Pâtée
+                </div>
+                <h3 class="product__title"><a href="#">Pâtée chien adulte 400g</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  <span class="rating-count">(3 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">1,250 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="8"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+            
+            <article class="product" data-animal="dogs" data-type="food" data-subtype="croquettes" data-price="5800">
+              <div class="product__media">
+                <img src="assets/images/croquettechien15kg.jpg" alt="Croquettes chien adulte 15kg" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-dog"></i> Chiens • Croquettes</div>
+                <h3 class="product__title"><a href="#">Croquettes chien adulte 15kg</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                  <span class="rating-count">(4 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">5,800 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="9"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+            
+            <article class="product" data-animal="dogs" data-type="care" data-subtype="hygiene" data-price="950">
+              <div class="product__media">
+                <img src="assets/images/shampoing-anti-insectes-a-lhuile-de-neem-pour-chien-300ml.jpg" alt="Shampooing chien 300ml" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-dog"></i> Chiens • Soins</div>
+                <h3 class="product__title"><a href="#">Shampooing chien anti-parasites 300ml</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                  <span class="rating-count">(22 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">950 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="10"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+            
+            <article class="product" data-animal="dogs" data-type="accessories" data-subtype="toys" data-price="1200">
+              <div class="product__media">
+                <img src="assets/images/corde-a-jouer-35cm.avif" alt="Corde Ã  jouer pour chien" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-dog"></i> Chiens • Accessoires</div>
+                <h3 class="product__title"><a href="#">Corde Ã  jouer pour chien 35cm</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  <span class="rating-count">(8 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">1,200 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="11"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- PRODUITS POUR OISEAUX -->
+            <article class="product" data-animal="birds" data-type="food" data-subtype="seeds" data-price="750">
+              <div class="product__media">
+                <img src="assets/images/melange-graines-premium-1kgs.jpg" alt="MÃ©lange de graines 1kg" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-dove"></i> Oiseaux • Nourriture</div>
+                <h3 class="product__title"><a href="#">MÃ©lange de graines premium 1kg</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                  <span class="rating-count">(19 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">750 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="12"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+            
+            <article class="product" data-animal="birds" data-type="care" data-subtype="vitamin" data-price="450">
+              <div class="product__media">
+                <img src="assets/images/oiseauxvitamin.jpg" alt="Vitamines pour oiseaux" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-dove"></i> Oiseaux • Soins</div>
+                <h3 class="product__title"><a href="#">Complexe vitaminique oiseaux 50ml</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                  <span class="rating-count">(12 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">450 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="13"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- PRODUITS POUR RONGEURS -->
+            <article class="product" data-animal="rodents" data-type="food" data-subtype="pellets" data-price="650">
+              <div class="product__media">
+                <img src="assets/images/granule-rongeur.avif" alt="GranulÃ©s rongeurs 800g" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-mouse"></i> Rongeurs • Nourriture</div>
+                <h3 class="product__title"><a href="#">GranulÃ©s complets rongeurs 800g</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                  <span class="rating-count">(16 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">650 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="14"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+            
+            <!-- PRODUITS POUR POISSONS -->
+            <article class="product" data-animal="fish" data-type="food" data-subtype="flakes" data-price="350">
+              <div class="product__media">
+                <img src="assets/images/flocons-poissons-tropicaux-100g.jpg" alt="Flocons poissons tropicaux" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-fish"></i> Poissons • Nourriture</div>
+                <h3 class="product__title"><a href="#">Flocons poissons tropicaux 100g</a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                  <span class="rating-count">(25 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">350 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="15"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+              <article class="product" data-animal="fish" data-type="food" data-subtype="flakes" data-price="1800">
+              <div class="product__media">
+                <img src="assets/images/poissonbocale.jpg" alt="Bocale" loading="lazy" />
+              </div>
+              <div class="product__body">
+                <div class="product__category"><i class="fas fa-fish"></i> Poissons • Accessoires</div>
+                <h3 class="product__title"><a href="#"> Bocale poisson 5L </a></h3>
+                <div class="product__rating">
+                  <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                  <span class="rating-count">(5 avis)</span>
+                </div>
+                <div class="product__price"><span class="current-price">1,800 DA</span></div>
+                <div class="product__actions">
+                  <button class="btn btn--primary add-to-cart" data-product-id="15"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                </div>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Pagination -->
+          <div class="pagination-wrapper" data-aos="fade-up">
+            <nav class="pagination">
+              <button class="pagination__btn pagination__prev" disabled>
+                <i class="fas fa-chevron-left"></i> PrÃ©cÃ©dent
+              </button>
+              <div class="pagination__numbers">
+                <button class="pagination__number active">1</button>
+                <button class="pagination__number">2</button>
+                <button class="pagination__number">3</button>
+                <span class="pagination__dots">...</span>
+                <button class="pagination__number">8</button>
+              </div>
+              <button class="pagination__btn pagination__next">
+                Suivant <i class="fas fa-chevron-right"></i>
+              </button>
+            </nav>
+          </div>
+          
+        </main>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Quick View Modal -->
+  <div class="modal fade" id="quickViewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Aperçu produit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="quickViewContent">
+          <!-- Contenu dynamique -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-cart"></i> Mon Panier</h3>
+      <button class="cart-close" id="cart-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-items">
+      <div class="empty-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Votre panier est vide</p>
+        <small>Ajoutez des produits pour commencer vos achats</small>
+      </div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display: none;">
+      <!-- Option de livraison -->
+      <div class="delivery-option mb-3">
+        <label class="delivery-checkbox d-flex align-items-center">
+          <input type="checkbox" id="delivery-option" onchange="updateCartTotal()">
+          <span class="ms-2">Livraison à domicile</span>
+          <span class="delivery-price ms-auto">500 DA</span>
+        </label>
+      </div>
+
+      <!-- Résumé des coûts -->
+      <div class="cart-totals">
+        <div class="d-flex justify-content-between mb-2">
+          <span>Sous-total:</span>
+          <span id="cart-subtotal">0 DA</span>
+        </div>
+        <div class="d-flex justify-content-between mb-2">
+          <span>Frais de livraison:</span>
+          <span id="delivery-cost">0 DA</span>
+        </div>
+        <div class="d-flex justify-content-between total-line--final">
+          <strong>Total:</strong>
+          <strong id="cart-total">0 DA</strong>
+        </div>
+      </div>
+
+      <button class="btn btn--primary btn-block mt-3" id="checkout-btn" type="button">
+        <i class="fas fa-credit-card"></i> Passer commande
+      </button>
+    </div>
+  </div>
+  
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <!-- Checkout Modal -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="fas fa-credit-card"></i> Finaliser la commande</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-12 col-md-6">
+              <form id="checkout-form" onsubmit="return processOrder()">
+                <div class="mb-3">
+                  <label class="form-label">Prénom</label>
+                  <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nom</label>
+                  <input type="text" class="form-control" id="lastName" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Numéro de téléphone</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="05xx xx xx xx" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Wilaya</label>
+                  <select class="form-select" id="wilaya" required>
+                    <option value="" selected disabled>Choisir une wilaya</option>
+                    <option>Adrar</option>
+                    <option>Chlef</option>
+                    <option>Laghouat</option>
+                    <option>Oum El Bouaghi</option>
+                    <option>Batna</option>
+                    <option>Béjaïa</option>
+                    <option>Biskra</option>
+                    <option>Béchar</option>
+                    <option>Blida</option>
+                    <option>Bouira</option>
+                    <option>Tamanrasset</option>
+                    <option>Tébessa</option>
+                    <option>Tlemcen</option>
+                    <option>Tiaret</option>
+                    <option>Tizi Ouzou</option>
+                    <option>Alger</option>
+                    <option>Djelfa</option>
+                    <option>Jijel</option>
+                    <option>Sétif</option>
+                    <option>Saïda</option>
+                    <option>Skikda</option>
+                    <option>Sidi Bel Abbès</option>
+                    <option>Annaba</option>
+                    <option>Guelma</option>
+                    <option>Constantine</option>
+                    <option>Médéa</option>
+                    <option>Mostaganem</option>
+                    <option>M'Sila</option>
+                    <option>Mascara</option>
+                    <option>Ouargla</option>
+                    <option>Oran</option>
+                    <option>El Bayadh</option>
+                    <option>Illizi</option>
+                    <option>Bordj Bou Arreridj</option>
+                    <option>Boumerdès</option>
+                    <option>El Tarf</option>
+                    <option>Tindouf</option>
+                    <option>Tissemsilt</option>
+                    <option>El Oued</option>
+                    <option>Khenchela</option>
+                    <option>Souk Ahras</option>
+                    <option>Tipaza</option>
+                    <option>Mila</option>
+                    <option>Aïn Defla</option>
+                    <option>Naâma</option>
+                    <option>Aïn Témouchent</option>
+                    <option>GhardaÃ¯a</option>
+                    <option>Relizane</option>
+                    <option>Timimoun</option>
+                    <option>Bordj Badji Mokhtar</option>
+                    <option>Ouled Djellal</option>
+                    <option>BÃ©ni AbbÃ¨s</option>
+                    <option>In Salah</option>
+                    <option>In Guezzam</option>
+                    <option>Touggourt</option>
+                    <option>Djanet</option>
+                    <option>El M'Ghaier</option>
+                    <option>El Meniaa</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Adresse complÃ¨te</label>
+                  <textarea class="form-control" id="address" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary w-100" id="submit-order">
+                  <i class="fas fa-check"></i> Envoyer la commande par email
+                </button>
+              </form>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="border rounded p-3 bg-light h-100">
+                <h6 class="mb-3"><i class="fas fa-receipt"></i> RÃ©capitulatif</h6>
+                <div id="checkout-summary">
+                  <!-- rempli par JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+        <!-- Footer content -->
+    </div>
+    <div class="text-center py-3">
+      <p>&copy; <span id="year"></span> ManaAnimaux. Tous droits rÃ©servÃ©s.</p>
+    </div>
+  </footer>
+
+  <!-- Bootôtrap JS -->
+  <script src="htôtps://cdn.jsdelivr.net/npm/bootôtrap@5.3.3/dist/js/bootôtrap.bundle.min.js"></script>
+  
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <!-- Typed.js for text animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Lottie for vector animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="assets/js/pagination.js"></script>
+  <script src="assets/js/script-new.js"></script>
+</body>
+</html>
